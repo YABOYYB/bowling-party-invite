@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Party Invitation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: #202124;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(60,64,67,.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #1a73e8;
+            color: white;
+            padding: 32px 24px;
+            text-align: center;
+        }
+        
+        .bowling-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 24px;
+        }
+        
+        .guest-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .guest-name {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .status-invited {
+            color: #137333;
+            background: #e6f4ea;
+            padding: 8px 16px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .status-not-invited {
+            color: #d93025;
+            background: #fce8e6;
+            padding: 8px 16px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .status-unknown {
+            color: #f9ab00;
+            background: #fef7e0;
+            padding: 8px 16px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 12px;
+        }
+        
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-label {
+            min-width: 80px;
+            color: #5f6368;
+            font-size: 14px;
+        }
+        
+        .detail-value {
+            font-size: 14px;
+            color: #202124;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin: 24px 0;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #1a73e8;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1557b0;
+            box-shadow: 0 1px 2px rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #1a73e8;
+            border: 1px solid #dadce0;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            border-color: #c4c7c5;
+        }
+        
+        .message {
+            background: #fef7e0;
+            border-left: 4px solid #f9ab00;
+            padding: 16px;
+            border-radius: 0 4px 4px 0;
+            margin: 16px 0;
+        }
+        
+        .message-error {
+            background: #fce8e6;
+            border-left-color: #d93025;
+        }
+        
+        .message h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: #202124;
+        }
+        
+        .message p {
+            font-size: 14px;
+            color: #5f6368;
+            margin: 0;
+        }
+        
+        .footer {
+            text-align: center;
+            padding-top: 16px;
+            border-top: 1px solid #e8eaed;
+            font-size: 12px;
+            color: #5f6368;
+        }
+        
+        @media (max-width: 600px) {
+            .actions {
+                flex-direction: column;
+            }
+            
+            .container {
+                margin: 0 -8px;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="bowling-icon">🎳</div>
+            <h1 class="title">Birthday Party</h1>
+            <p class="subtitle">You're invited to celebrate!</p>
+        </div>
+        
+        <div class="content">
+            <div class="guest-section" id="guest-section">
+                <!-- Guest status will be inserted here -->
+            </div>
+            
+            <div class="details">
+                <div class="detail-row">
+                    <div class="detail-label">Date:</div>
+                    <div class="detail-value">[September 7]</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Time:</div>
+                    <div class="detail-value">[12 noon]</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Location:</div>
+                    <div class="detail-value">[Strike Zone Promenade Mall & Cj's at Promenade Mall]</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Host:</div>
+                    <div class="detail-value">[Yahya]</div>
+                </div>
+            </div>
+            
+            <div id="actions">
+                <!-- Action buttons will be inserted here -->
+            </div>
+            
+            <div id="messages">
+                <!-- Messages will be inserted here -->
+            </div>
+            
+            <div class="footer">
+                Questions? Contact [YOUR CONTACT INFO]
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const guestList = {
+            'alex': { name: 'Hitansh Shah', invited: true },
+            'sarah': { name: 'Tharana Panabokke', invited: true },
+            'mike': { name: 'Farees Mohammed', invited: true },
+            'emma': { name: 'Omar  Aziz', invited: true },
+            'josh': { name: 'David Ling', invited: true },
+            'lily': { name: 'Vyan Borthakur', invited: true }
+        };
+        
+        function getURLParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        
+        function showGuestStatus() {
+            const guestId = getURLParameter('guest');
+            const guestSection = document.getElementById('guest-section');
+            const actionsDiv = document.getElementById('actions');
+            const messagesDiv = document.getElementById('messages');
+            
+            if (!guestId) {
+                guestSection.innerHTML = `
+                    <div class="guest-name">Invalid invitation link</div>
+                    <div class="status-unknown">Link error</div>
+                `;
+                messagesDiv.innerHTML = `
+                    <div class="message">
+                        <h4>Something went wrong</h4>
+                        <p>This invitation link appears to be incomplete. Please contact the host.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const guest = guestList[guestId.toLowerCase()];
+            
+            if (!guest) {
+                guestSection.innerHTML = `
+                    <div class="guest-name">Guest verification</div>
+                    <div class="status-not-invited">Not on guest list</div>
+                `;
+                messagesDiv.innerHTML = `
+                    <div class="message message-error">
+                        <h4>Private event</h4>
+                        <p>This is a small celebration with limited space. We appreciate your understanding.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            guestSection.innerHTML = `
+                <div class="guest-name">${guest.name}</div>
+                <div class="status-invited">You're invited!</div>
+            `;
+            
+            actionsDiv.innerHTML = `
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="handleRSVP('attending')">I'll be there</button>
+                    <button class="btn btn-secondary" onclick="handleRSVP('not-attending')">Can't make it</button>
+                </div>
+            `;
+        }
+        
+        function handleRSVP(response) {
+            const guestId = getURLParameter('guest');
+            const guest = guestList[guestId.toLowerCase()];
+            const messagesDiv = document.getElementById('messages');
+            
+            if (response === 'attending') {
+                messagesDiv.innerHTML = `
+                    <div class="message">
+                        <h4>Thanks for responding!</h4>
+                        <p>We've noted that ${guest.name} will be attending. See you there!</p>
+                    </div>
+                `;
+            } else {
+                messagesDiv.innerHTML = `
+                    <div class="message">
+                        <h4>Thanks for letting us know</h4>
+                        <p>We'll miss you, ${guest.name}. Hope to celebrate with you another time!</p>
+                    </div>
+                `;
+            }
+            
+            // Log the response (in a real app, this would go to a server)
+            console.log(`RSVP: ${guest.name} - ${response}`);
+            
+            // Hide action buttons after response
+            document.getElementById('actions').style.display = 'none';
+        }
+        
+        // Initialize the page
+        showGuestStatus();
+    </script>
+</body>
+</html>
